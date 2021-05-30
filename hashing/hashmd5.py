@@ -1,4 +1,4 @@
-import hashlib, requests, bs4, re
+import hashlib, requests, bs4, re, os
 
 def stringToMD5(string):
 
@@ -30,3 +30,6 @@ def md5ToString(md5):
             print(elem[0].text)
         except:
             print('Hash not found in databases')
+
+def md5brute(md5, wordlist):
+    
