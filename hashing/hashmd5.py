@@ -47,17 +47,17 @@ def md5Brute(md5, wordlist):
         print('Invalid path') #Exit program if invalid path
         sys.exit()
 
-    if not verifyMD5(md5):
+    if not verifyMD5(md5):  #Verify if hash is correct
         print('Invalid hash')
         sys.exit()
 
     with open(wordlist, 'r') as w:
-        words = w.readlines()
+        words = w.readlines()   #Store all lines in a list
 
     for word in words:
         md5String = stringToMD5(word.rstrip())
 
-        if md5String == md5:
+        if md5String == md5:    #Check if hash matches
             print(md5 + ":" + word)
             break
     else:
