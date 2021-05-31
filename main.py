@@ -1,1 +1,1 @@
-print("This is the main file")
+from hashing.hashmd5 import *
