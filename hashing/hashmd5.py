@@ -1,4 +1,4 @@
-import hashlib, requests, bs4, re, os
+import hashlib, requests, bs4, re, os, sys
 
 def stringToMD5(string):
 
@@ -6,13 +6,20 @@ def stringToMD5(string):
 
     return result.hexdigest() #Return the required hexadecimal hash
 
-def md5ToString(md5):
-    
+def verifyMD5(md5):
     md5Regex = re.compile(r'^[0-9a-f]{32}$') #Create a regex object
     mo = md5Regex.search(md5.lower()) #Create a match object
 
     if mo == None:
+        return False
+    else:
+        return True
+
+def md5ToString(md5):
+
+    if not verifyMD5(md5):
         print('Invalid hash')
+        sys.exit()
     else:
         url = 'https://md5.gromweb.com/?md5=' + md5 #Create a url
 
@@ -31,5 +38,27 @@ def md5ToString(md5):
         except:
             print('Hash not found in databases')
 
-def md5brute(md5, wordlist):
+def md5Brute(md5, wordlist):
     
+    if os.path.exists(wordlist) and os.path.isfile(wordlist): #Check if the wordlist exists and if it is a file
+        if not os.path.isabs(wordlist): #Check if it an absolute path
+            wordlist = os.path.abspath(wordlist)
+    else:
+        print('Invalid path') #Exit program if invalid path
+        sys.exit()
+
+    if not verifyMD5(md5):
+        print('Invalid hash')
+        sys.exit()
+
+    with open(wordlist, 'r') as w:
+        words = w.readlines()
+
+    for word in words:
+        md5String = stringToMD5(word.rstrip())
+
+        if md5String == md5:
+            print(md5 + ":" + word)
+            break
+    else:
+        print("Not found")
