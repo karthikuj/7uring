@@ -51,7 +51,7 @@ def md5Brute(md5, wordlist):
         print('Invalid hash')
         sys.exit()
 
-    with open(wordlist, 'r') as w:
+    with open(wordlist, 'r', errors='replace') as w:
         words = w.readlines()   #Store all lines in a list
 
     for word in words:
