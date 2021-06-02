@@ -1,5 +1,11 @@
 import hashlib, requests, bs4, re, os, sys
 
+colors = {
+    'error':'\033[31;1m[x] ',
+    'success':'\033[36;1m[-] ',
+    'msg':'\033[33;1m[o] '
+    }
+
 def stringToMD5(string):
 
     result = hashlib.md5(string.encode()) #Create an MD5 hash object
@@ -18,7 +24,7 @@ def verifyMD5(md5):
 def md5ToString(md5):
 
     if not verifyMD5(md5):
-        print('Invalid hash')
+        print(colors['error'] + 'Invalid hash')
         sys.exit()
     else:
         url = 'https://md5.gromweb.com/?md5=' + md5 #Create a url
@@ -36,7 +42,7 @@ def md5ToString(md5):
         try:
             print(elem[0].text)
         except:
-            print('Hash not found in databases')
+            print(colors['msg'] + 'Hash not found in databases')
 
 def md5Brute(md5, wordlist):
     
@@ -44,11 +50,11 @@ def md5Brute(md5, wordlist):
         if not os.path.isabs(wordlist): #Check if it an absolute path
             wordlist = os.path.abspath(wordlist)
     else:
-        print('Invalid path') #Exit program if invalid path
+        print(colors['error'] + 'Invalid path') #Exit program if invalid path
         sys.exit()
 
     if not verifyMD5(md5):  #Verify if hash is correct
-        print('Invalid hash')
+        print(colors['error'] + 'Invalid hash')
         sys.exit()
 
     with open(wordlist, 'r', errors='replace') as w:
@@ -58,8 +64,8 @@ def md5Brute(md5, wordlist):
         md5String = stringToMD5(word.rstrip())
 
         if md5String == md5:    #Check if hash matches
-            print('\nCracked!')
-            print(md5 + ":" + word)
+            print('\n' + colors['msg'] + 'Cracked!')
+            print(colors['success'] + md5 + ":" + word)
             break
     else:
-        print("Not found")
+        print(colors['msg'] + "Not found")
