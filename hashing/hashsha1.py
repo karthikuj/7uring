@@ -1,11 +1,19 @@
 import hashlib, requests, bs4, re, os, sys
 
+colors = {
+    'error':'\033[31;1m[x] ',
+    'success':'\033[36;1m[-] ',
+    'msg':'\033[33;1m[o] '
+    }
+
 def stringToSHA1(string):
+    
     result = hashlib.sha1(string.encode()) #Create a SHA1 hash object
 
     return result.hexdigest() #Return the required hexadecimal hash
 
 def verifySHA1(sha1):
+    
     sha1Regex = re.compile(r'^[a-f0-9]{40}$') #SHA-1 regex object
     mo = sha1Regex.search(sha1.lower()) #Create a match object
 
@@ -13,3 +21,26 @@ def verifySHA1(sha1):
         return False
     else:
         return True
+
+def sha1ToString(sha1):
+    
+    if not verifySHA1(sha1):
+        print(colors['error'] + 'Invalid hash')
+        sys.exit()
+    else:
+        url = 'https://sha1.gromweb.com/?hash=' + sha1 #Create url for scraping
+
+        res = requests.get(url) #Query the url
+        res.raise_for_status()
+
+        source = res.content
+
+        soup = bs4.BeautifulSoup(source, 'lxml') #Create a beautiful soup object
+
+        css_path = 'html body div#page.p-1.p-3-lg div#container section#section article div#content p em.long-content.string'
+        elem = soup.select(css_path)
+
+        try:
+            print(colors['msg'] + 'Cracked!\n' + colors['success'] + sha1 + ':' + elem[0].text) #Print the cracked string
+        except:
+            print(colors['msg'] + 'Hash not found in databases')
