@@ -37,10 +37,10 @@ def md5ToString(md5):
         soup = bs4.BeautifulSoup(source, 'lxml') #Create a beautiful soup object
 
         css_path = 'html body div#page.p-1.p-3-lg div#container section#section article div#content p em.long-content.string'
-        elem = soup.select(css_path)
+        elem = soup.select(css_path) #Find the required element
 
         try:
-            print(elem[0].text)
+            print(colors['msg'] + 'Cracked!' + '\n' + colors['success'] + md5 + ':' + elem[0].text) #Print the cracked string
         except:
             print(colors['msg'] + 'Hash not found in databases')
 
