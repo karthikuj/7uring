@@ -44,3 +44,29 @@ def sha1ToString(sha1):
             print(colors['msg'] + 'Cracked!\n' + colors['success'] + sha1 + ':' + elem[0].text) #Print the cracked string
         except:
             print(colors['msg'] + 'Hash not found in databases')
+
+def sha1Brute(sha1, wordlist):
+    
+    if os.path.exists(wordlist) and os.path.isfile(wordlist): #Check if the wordlist exists and if it is a file
+        if not os.path.isabs(wordlist): #Check if it an absolute path
+            wordlist = os.path.abspath(wordlist)
+    else:
+        print(colors['error'] + 'Invalid path')
+        sys.exit()
+
+    if not verifySHA1(sha1): #Verify if hash is correct
+        print(colors['error'] + 'Invalid hash')
+        sys.exit()
+
+    with open(wordlist, 'r', errors='replace') as w:
+        words = w.readlines() #Store all words in a list
+
+    for word in words:
+        sha1String = stringToSHA1(word.rstrip())
+
+        if sha1String == sha1: #Check if hash matches
+            print('\n' + colors['msg'] + 'Cracked!')
+            print(colors['success'] + sha1 + ':' + word)
+            break
+    else:
+        print(colors['msg'] + 'Not found')
