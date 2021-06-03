@@ -65,7 +65,7 @@ def sha1Brute(sha1, wordlist):
         sha1String = stringToSHA1(word.rstrip())
 
         if sha1String == sha1: #Check if hash matches
-            print('\n' + colors['msg'] + 'Cracked!')
+            print(colors['msg'] + 'Cracked!')
             print(colors['success'] + sha1 + ':' + word)
             break
     else:

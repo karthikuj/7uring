@@ -64,7 +64,7 @@ def md5Brute(md5, wordlist):
         md5String = stringToMD5(word.rstrip())
 
         if md5String == md5:    #Check if hash matches
-            print('\n' + colors['msg'] + 'Cracked!')
+            print(colors['msg'] + 'Cracked!')
             print(colors['success'] + md5 + ":" + word)
             break
     else:
