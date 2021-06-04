@@ -46,7 +46,7 @@ def sha256ToString(sha256):
         css_path = 'html body div#corps fieldset#answer b'
         elem = soup.select(css_path) #Find the required element
 
-        '''try:
+        try:
             print(colors['msg'] + 'Cracked!\n' + colors['success'] + sha256 + ':' + elem[0].text) #Print the cracked string
         except:
-            print(colors['msg'] + 'Hash not found in databases')'''
+            print(colors['msg'] + 'Hash not found in databases')
