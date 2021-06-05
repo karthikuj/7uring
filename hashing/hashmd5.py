@@ -47,7 +47,7 @@ def md5ToString(md5):
 def md5Brute(md5, wordlist):
     
     if os.path.exists(wordlist) and os.path.isfile(wordlist): #Check if the wordlist exists and if it is a file
-        if not os.path.isabs(wordlist): #Check if it an absolute path
+        if not os.path.isabs(wordlist): #Check if it is an absolute path
             wordlist = os.path.abspath(wordlist)
     else:
         print(colors['error'] + 'Invalid path') #Exit program if invalid path
