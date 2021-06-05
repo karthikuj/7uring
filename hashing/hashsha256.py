@@ -50,3 +50,29 @@ def sha256ToString(sha256):
             print(colors['msg'] + 'Cracked!\n' + colors['success'] + sha256 + ':' + elem[0].text) #Print the cracked string
         except:
             print(colors['msg'] + 'Hash not found in databases')
+
+def sha256Brute(sha256, wordlist):
+
+    if os.path.exists(wordlist) and os.path.isfile(wordlist): #Check if the wordlist exists
+        if not os.path.isabs(wordlist): #Check if it is an absolute path
+            wordlist = os.path.abspath(wordlist)
+    else:
+        print(colors['error'] + 'Invalid path')
+        sys.exit()
+
+    if not verifySHA256(sha256): #Verify if hash is correct
+        print(colors['error'] + 'Invalid hash')
+        sys.exit()
+
+    with open(wordlist, 'r', errors='replace') as w:
+        words = w.readlines() #Store all words in a list
+
+    for word in words:
+        sha256String = stringToSHA256(word.rstrip())
+
+        if sha256String == sha256: #Check if hash matches
+            print(colors['msg'] + 'Cracked!')
+            print(colors['success'] + sha256 + ':' + word)
+            break
+    else:
+        print(colors['msg'] + 'Not found')
