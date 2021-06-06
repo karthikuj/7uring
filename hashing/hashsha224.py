@@ -20,3 +20,11 @@ def verifySHA224(sha224):
         return False
     else:
         return True
+
+def sha224ToString(sha224):
+    pass
+    '''if not verifySHA224(sha224):
+        print(colors['error'] + 'Invalid hash')
+        sys.exit()
+    else:
+        url = '''
