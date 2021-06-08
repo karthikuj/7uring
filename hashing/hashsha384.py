@@ -6,4 +6,8 @@ colors = {
     'msg':'\033[33;1m[o] '
     }
 
-def 
+def stringToSHA384(string):
+    
+    result = hashlib.sha384(string.encode()) #Create a SHA384 object
+
+    return result.hexdigest() #Return the required hexadecimal hash
