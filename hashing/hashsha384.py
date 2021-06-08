@@ -20,3 +20,33 @@ def verifySHA384(sha384):
         return False
     else:
         return True
+    
+def sha384ToString(sha384):
+
+    if not verifySHA384(sha384):
+        print(colors['error'] + 'Invalid hash')
+        sys.exit()
+    else:
+        
+        URL = 'https://md5decrypt.net/en/Sha384/' #Create a url
+        myobj = {
+            'hash':sha384,
+            'captcha65684':'',
+            'ahah65684':'30beb54b674b10bf73888fda4d38893f',
+            'decrypt':'Decrypt'
+            }
+
+        res = requests.post(url=URL, data=myobj) #Send a POST request
+        res.raise_for_status()
+
+        source = res.content
+
+        soup = bs4.BeautifulSoup(source, 'lxml') #Create a beautiful soup object
+
+        css_path = 'html body div#corps fieldset#answer b'
+        elem = soup.select(css_path) #Find the required element
+
+        try:
+            print(colors['msg'] + 'Cracked!\n' + colors['success'] + sha384 + ':' + elem[0].text) #Print the cracked string
+        except:
+            print(colors['msg'] + 'Hash not found in databases')
