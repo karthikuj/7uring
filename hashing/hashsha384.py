@@ -50,3 +50,29 @@ def sha384ToString(sha384):
             print(colors['msg'] + 'Cracked!\n' + colors['success'] + sha384 + ':' + elem[0].text) #Print the cracked string
         except:
             print(colors['msg'] + 'Hash not found in databases')
+
+def sha384Brute(sha384, wordlist):
+
+    if os.path.exists(wordlist) and os.path.isfile(wordlist): #Check if the wordlist exists and if it is a file
+        if not os.path.isabs(wordlist): #Check if it is an absolute path
+            wordlist = os.path.abspath(wordlist)
+    else:
+        print(colors['error'] + 'Invalid path') #Exit program if invalid path
+        sys.exit()
+
+    if not verifySHA384(sha384): #Verify if hash is correct
+        print(colors['error'] + 'Invalid hash')
+        sys.exit()
+
+    with open(wordlist, 'r', errors='replace') as w:
+        words = w.readlines() #Store all lines in a list
+
+    for word in words:
+        sha384String = stringToSHA384(word.rstrip())
+
+        if sha384String == sha384: #Check if hash matches
+            print(colors['msg'] + 'Cracked!')
+            print(colors['success'] + sha384 + ':' + word)
+            break
+    else:
+        print(colors['msg'] + 'Not found')
