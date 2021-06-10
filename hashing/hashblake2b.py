@@ -5,3 +5,5 @@ colors = {
     'success':'\033[36;1m[-] ',
     'msg':'\033[33;1m[o] '
     }
+
+def stringToBlake2b(string):
