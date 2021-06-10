@@ -7,3 +7,7 @@ colors = {
     }
 
 def stringToBlake2b(string):
+
+    result = hashlib.blake2b(string.encode()) #Create a blake2b hash object
+
+    return result.hexdigest() #Return the required hexadecimal hash
