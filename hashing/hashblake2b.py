@@ -11,3 +11,12 @@ def stringToBlake2b(string):
     result = hashlib.blake2b(string.encode()) #Create a blake2b hash object
 
     return result.hexdigest() #Return the required hexadecimal hash
+
+def verifyBlake2b(blake2b):
+    blake2bRegex = re.compile(r'^[0-9a-f]{128}$') #Create a regex object
+    mo = blake2bRegex.search(blake2b.lower()) #Create a match object
+
+    if mo == None:
+        return False
+    else:
+        return True
