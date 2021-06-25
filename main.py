@@ -10,3 +10,4 @@ colors = {
     'msg':'\033[33;1m[o] '
     }
 
+print(colors['success'] + "Hello world")
