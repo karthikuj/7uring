@@ -9,5 +9,9 @@ colors = {
     'success':'\033[36;1m[-] ',
     'msg':'\033[33;1m[o] '
     }
-
+print(colors['success'] + '''
+𝟟𝕦𝕣𝕚𝕟𝕘
+By @5up3r541y4n (karthikuj2001@gmail.com)
+'''
+     )
 print(colors['success'] + "Hello world")
