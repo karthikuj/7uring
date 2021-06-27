@@ -19,4 +19,4 @@ _________             .__
 By @5up3r541y4n (karthikuj2001@gmail.com)
 '''
      )
-print(colors['success'] + "Hello world")
+print(colors['success'] + "Drink all the booze, hack all the things")
