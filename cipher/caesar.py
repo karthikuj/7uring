@@ -12,6 +12,9 @@ colors = {
 def caesarEncrypt(text, shift):
     res = ''
 
+    if shift < 0 or shift > 25:
+        print(colors['error'] + 'Shift value should be 0-25') #Shift value check
+
     for i in range(len(text)):
 
         if text[i].isupper():
@@ -33,6 +36,9 @@ def caesarEncrypt(text, shift):
 
 def caesarDecrypt(text, shift):
     res = ''
+
+    if shift < 0 or shift > 25:
+        print(colors['error'] + 'Shift value should be 0-25') #Shift value check
 
     for i in range(len(text)):
 
