@@ -1,4 +1,4 @@
-import sys
+import sys, enchant
 
 small = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
          'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
@@ -18,7 +18,7 @@ def caesarEncrypt(text, shift):
     for i in range(len(text)):
 
         if text[i].isupper():
-            ind = small.index(text[i].upper()) #Find the index of character
+            ind = small.index(text[i].lower()) #Find the index of character
             res += small[(ind + shift)%26].upper() #Shift the character
             
         elif text[i].islower():
@@ -32,7 +32,7 @@ def caesarEncrypt(text, shift):
             print(colors['error'] + 'Invalid characters!') #Check for invalid characters
             sys.exit()
             
-    print(colors['success'] + text + ' : ' + res)
+    print(colors['success'] + res)
 
 def caesarDecrypt(text, shift):
     res = ''
@@ -43,7 +43,7 @@ def caesarDecrypt(text, shift):
     for i in range(len(text)):
 
         if text[i].isupper():
-            ind = small.index(text[i].upper()) #Find the index of character
+            ind = small.index(text[i].lower()) #Find the index of character
             res += small[ind - shift].upper() #Shift the character
 
         elif text[i].islower():
@@ -57,17 +57,19 @@ def caesarDecrypt(text, shift):
             print(colors['error'] + 'Invalid characters!') #Check for invalid characters
             sys.exit()
 
-    print(colors['success'] + text + ' : ' + res)
+    print(colors['success'] + res)
 
 def caesarBrute(text):
 
+    possible = set()
+    
     for shift in range(26):
         res = ''
 
         for i in range(len(text)):
 
             if text[i].isupper():
-                ind = small.index(text[i].upper()) #Find the index of character
+                ind = small.index(text[i].lower()) #Find the index of character
                 res += small[ind - shift].upper() #Shift the character
 
             elif text[i].islower():
@@ -83,3 +85,15 @@ def caesarBrute(text):
 
         print(colors['success'] + 'shift(' + "{:02d}".format(shift) +
               ')' + ' : ' + res)
+
+        dic = enchant.Dict('en_US') #Create a english US Dictionary
+        
+        for j in res.split():
+            if len(j) > 2 and dic.check(j): #Check for english words
+                possible.add('shift(' + "{:02d}".format(shift) +
+                             ')' + ' : ' + res)
+                
+    if len(possible) > 0:
+        print(colors['success'][:-4] + '\nMost possible solutions:') #Print most possible solutions
+        for k in possible:
+            print(colors['success'] + k)
