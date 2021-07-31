@@ -27,5 +27,5 @@ print(colors['orange'] + '''
 '''
      )
 
-print(stringToMD4('admin'))
-md4ToString('f9d4049dd6a4dc35d40e5265954b2a46')
+morseEncode('So look me in the eyes. Tell me what you see. Perfect paradise tearing at the seams.')
+morseDecode('... ---  .-.. --- --- -.-  -- .  .. -.  - .... .  . -.-- . ... .-.-.-  - . .-.. .-..  -- .  .-- .... .- -  -.-- --- ..-  ... . . .-.-.-  .--. . .-. ..-. . -.-. -  .--. .- .-. .- -.. .. ... .  - . .- .-. .. -. --.  .- -  - .... .  ... . .- -- ... .-.-.-')
