@@ -1,11 +1,16 @@
-import hashlib,re,sys,requests,bs4,os
- 
-def stringToMD5(string):
+import hashlib, re, sys, requests, bs4, os
 
-    result = hashlib.new('md4',string.encode('utf-8')) #Create an MD5 hash object
+colors = {
+    'error':'\033[31;1m[x] ',
+    'success':'\033[36;1m[-] ',
+    'msg':'\033[33;1m[o] '
+    }
+ 
+def stringToMD4(string):
+
+    result = hashlib.new('md4',string.encode('utf-8')) #Create an MD4 hash object
 
     return result.hexdigest() #Return the required hexadecimal hash
-
 
 def verifyMD4(md4):
     md4Regex = re.compile(r'^[0-9a-f]{32}$') #Create a regex object
@@ -16,11 +21,10 @@ def verifyMD4(md4):
     else:
         return True
 
-
 def md4ToString(md4):
 
     if not verifyMD4(md4):
-        print('error' + 'Invalid hash')
+        print(colors['error'] + 'Invalid hash')
         sys.exit()
     else:
         url = 'https://md5decrypt.net/en/Md4/?md4=' + md4 #Create a url
@@ -36,32 +40,32 @@ def md4ToString(md4):
         elem = soup.select(css_path) #Find the required element
 
         try:
-            print('msg' + 'Cracked!' + '\n' +'success' + md4 + ':' + elem[0].text) #Print the cracked string
+            print(colors['msg'] + 'Cracked!' + '\n' + colors['success'] + md4 + ':' + elem[0].text) #Print the cracked string
         except:
-            print('msg' + 'Hash not found in databases')
+            print(colors['msg'] + 'Hash not found in databases')
 
-def md5Brute(md4, wordlist):
+def md4Brute(md4, wordlist):
     
     if os.path.exists(wordlist) and os.path.isfile(wordlist): #Check if the wordlist exists and if it is a file
         if not os.path.isabs(wordlist): #Check if it is an absolute path
             wordlist = os.path.abspath(wordlist)
     else:
-        print('error' + 'Invalid path') #Exit program if invalid path
+        print(colors['error'] + 'Invalid path') #Exit program if invalid path
         sys.exit()
 
     if not verifyMD4(md4):  #Verify if hash is correct
-        print('error' + 'Invalid hash')
+        print(colors['error'] + 'Invalid hash')
         sys.exit()
 
     with open(wordlist, 'r', errors='replace') as w:
         words = w.readlines()   #Store all lines in a list
 
     for word in words:
-        md5String = stringToMD5(word.rstrip())
+        md4String = stringToMD4(word.rstrip())
 
-        if md5String == md4:    #Check if hash matches
-            print('msg' + 'Cracked!')
-            print('success' + md4 + ":" + word)
+        if md4String == md4:    #Check if hash matches
+            print(colors['msg'] + 'Cracked!')
+            print(colors['success'] + md4 + ":" + word)
             break
     else:
-        print('msg' + "Not found")
+        print(colors['msg'] + "Not found")

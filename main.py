@@ -3,6 +3,7 @@ from hashing.hashsha1 import *
 from hashing.hashsha256 import *
 from hashing.hashsha224 import *
 from hashing.hashsha384 import *
+from hashing.hashmd4 import *
 from cipher.caesar import *
 from cipher.morse import *
 
@@ -25,4 +26,5 @@ print(colors['orange'] + '''
 '''
      )
 
-morseDecode('.... . .-.. .-.. ---  -.... ----.  .... . .-.. .-.. ---')
+print(stringToMD4('admin'))
+md4ToString('f9d4049dd6a4dc35d40e5265954b2a46')
