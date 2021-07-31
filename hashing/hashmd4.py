@@ -27,16 +27,22 @@ def md4ToString(md4):
         print(colors['error'] + 'Invalid hash')
         sys.exit()
     else:
-        url = 'https://md5decrypt.net/en/Md4/?md4=' + md4 #Create a url
+        URL = 'https://md5decrypt.net/en/Md4/' #Create a url
+        myobj = {
+            'hash':md4,
+            'captcha65':'',
+            'ahah65':'ea1f3b6fdf11511d0a4fa2ae757132db',
+            'decrypt':'Decrypt'
+            }
 
-        res = requests.get(url) #Query the url
+        res = requests.post(url=URL, data=myobj) #Send a POST request
         res.raise_for_status()
         
         source = res.content
 
         soup = bs4.BeautifulSoup(source, 'lxml') #Create a beautiful soup object
 
-        css_path = 'html body div#page.p-1.p-3-lg div#container section#section article div#content p em.long-content.string'
+        css_path = 'html body div#corps fieldset#answer b'
         elem = soup.select(css_path) #Find the required element
 
         try:
