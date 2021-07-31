@@ -4,6 +4,7 @@ from hashing.hashsha256 import *
 from hashing.hashsha224 import *
 from hashing.hashsha384 import *
 from cipher.caesar import *
+from cipher.morse import *
 
 colors = {
     'error':'\033[31;1m[x] ',
@@ -24,6 +25,4 @@ print(colors['orange'] + '''
 '''
      )
 
-caesarEncrypt('Ambarsariya', 5)
-caesarDecrypt('Ftqk emk', 12)
-caesarBrute('Ftqk emk uf ue itmf kag ymwq U emk uf ue gbfa rmfq')
+morseDecode('.... . .-.. .-.. ---  -.... ----.  .... . .-.. .-.. ---')
