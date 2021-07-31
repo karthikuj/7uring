@@ -52,7 +52,6 @@ def morseDecode(morse):
                 res += keyList[valList.index(j)]
             except:
                 print(colors['error'] + 'Invalid morse code!')
-                print(j)
                 sys.exit()
 
         res += ' '
