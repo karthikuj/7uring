@@ -6,6 +6,7 @@ from hashing.hashsha224 import *
 from hashing.hashsha384 import *
 from hashing.hashmd4 import *
 from hashing.hashblake2b import *
+from hashing.hashwhirlpool import *
 from cipher.caesar import *
 from cipher.morse import *
 
@@ -27,5 +28,3 @@ print(colors['orange'] + '''
     By @5up3r541y4n (karthikuj2001@gmail.com)
 '''
      )
-
-blake2bBrute('bfcce2c19c8563fd4aa66f6ec607341ff25e5f6fe7fa520d7d1242d871385f23a3e8e80093120b4877d79535e10b182ae2ec8937d1f72f091e7178c9e4ff0f11', '/usr/share/wordlists/rockyou.txt')
