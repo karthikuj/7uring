@@ -26,8 +26,8 @@ def sha256ToString(sha256):
     if not verifySHA256(sha256):
         print(colors['error'] + 'Invalid hash')
         sys.exit()
-    else:
         
+    else:
         URL = 'https://md5decrypt.net/en/Sha256/' #Create a url
         myobj = {
             'hash':sha256,

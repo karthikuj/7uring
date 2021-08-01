@@ -20,3 +20,34 @@ def verifyBlake2b(blake2b):
         return False
     else:
         return True
+
+def blake2bToString(blake2b):
+    print(colors['msg'] + 'The online "de-hashing" facility for blake2b\
+ is not available yet,\nyou can still try to bruteforce the hash using 7uring.')
+    sys.exit()
+
+def blake2bBrute(blake2b, wordlist):
+    
+    if os.path.exists(wordlist) and os.path.isfile(wordlist): #Check if the wordlist exists
+        if not os.path.isabs(wordlist): #Check if it is an absolute path
+            wordlist = os.path.abspath(wordlist)
+    else:
+        print(colors['error'] + 'Invalid path')
+        sys.exit()
+
+    if not verifyBlake2b(blake2b): #Verify if hash is correct
+        print(colors['error'] + 'Invalid hash')
+        sys.exit()
+
+    with open(wordlist, 'r', errors='replace') as w:
+        words = w.readlines() #Store all words in a list
+
+    for word in words:
+        blake2bString = stringToBlake2b(word.rstrip())
+
+        if blake2bString == blake2b: #Check if hash matches
+            print(colors['msg'] + 'Cracked!')
+            print(colors['success'] + blake2b + ':' + word)
+            break
+    else:
+        print(colors['msg'] + 'Not found')

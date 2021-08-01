@@ -5,6 +5,7 @@ from hashing.hashsha256 import *
 from hashing.hashsha224 import *
 from hashing.hashsha384 import *
 from hashing.hashmd4 import *
+from hashing.hashblake2b import *
 from cipher.caesar import *
 from cipher.morse import *
 
@@ -27,5 +28,4 @@ print(colors['orange'] + '''
 '''
      )
 
-morseEncode('So look me in the eyes. Tell me what you see. Perfect paradise tearing at the seams.')
-morseDecode('... ---  .-.. --- --- -.-  -- .  .. -.  - .... .  . -.-- . ... .-.-.-  - . .-.. .-..  -- .  .-- .... .- -  -.-- --- ..-  ... . . .-.-.-  .--. . .-. ..-. . -.-. -  .--. .- .-. .- -.. .. ... .  - . .- .-. .. -. --.  .- -  - .... .  ... . .- -- ... .-.-.-')
+blake2bBrute('bfcce2c19c8563fd4aa66f6ec607341ff25e5f6fe7fa520d7d1242d871385f23a3e8e80093120b4877d79535e10b182ae2ec8937d1f72f091e7178c9e4ff0f11', '/usr/share/wordlists/rockyou.txt')

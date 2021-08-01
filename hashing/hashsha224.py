@@ -1,4 +1,4 @@
-import os, re, sys, bs4, requests, hashlib
+import os, re, sys, hashlib
 
 colors = {
     'error':'\033[31;1m[x] ',
@@ -22,9 +22,32 @@ def verifySHA224(sha224):
         return True
 
 def sha224ToString(sha224):
-    pass
-    '''if not verifySHA224(sha224):
+    print(colors['msg'] + 'The online "de-hashing" facility for sha224\
+ is not available yet,\nyou can still try to bruteforce the hash using 7uring.')
+    sys.exit()
+
+def sha224Brute(sha224, wordlist):
+
+    if os.path.exists(wordlist) and os.path.isfile(wordlist): #Check if wordlist exists
+        if not os.path.isabs(wordlist): #Check if it is an absolute path
+            wordlist = os.path.abspath(wordlist)
+    else:
+        print(colors['error'] + 'Invalid path')
+        sys.exit()
+
+    if not verifySHA224(sha224): #Verify if hash is correct
         print(colors['error'] + 'Invalid hash')
         sys.exit()
+
+    with open(wordlist, 'r', errors='replace') as w:
+        words = w.readlines() #Store all words in a list
+
+    for word in words:
+        sha224String = stringToSHA224(word.rstrip())
+
+        if sha224String == sha224: #Check if hash matches
+            print(colors['msg'] + 'Cracked!')
+            print(colors['success'] + sha224 + ':' + word)
+            break
     else:
-        url = '''
+        print(colors['msg'] + 'Not found')
