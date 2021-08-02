@@ -86,7 +86,7 @@ def caesarBrute(text):
         print(colors['success'] + 'shift(' + "{:02d}".format(shift) +
               ')' + ' : ' + res)
 
-        dic = enchant.Dict('en_US') #Create a english US Dictionary
+        dic = enchant.Dict('en_US') #Create a US english Dictionary
         
         for j in res.split():
             if len(j) > 2 and dic.check(j): #Check for english words
