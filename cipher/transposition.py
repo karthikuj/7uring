@@ -1,4 +1,4 @@
-import sys
+import sys, math
 
 colors = {
     'error':'\033[31;1m[x] ',
@@ -7,17 +7,29 @@ colors = {
     }
 
 def transpositionEncrypt(text, key):
+    cipher = ''
     k = list(key)
     ksort = sorted(k)
     
     perm = []
     for i in ksort:
-        perm.append(k.index(i)+1)
+        perm.append(k.index(i))
         k[k.index(i)] = '§'
         
-    message = list(text)
-    for i in range(len(message)):
-        
-    print(perm)
+    message = []
+    for i in range(math.ceil(len(text)/len(key))):
+        message.append(list())
+        message[i] = list(text[i*len(key):(i*len(key))+len(key)])
+        if len(message[i]) < len(key):
+            message[i].extend(list(' '*(len(key)-len(message[i]))))
 
-transpositionEncrypt('hello', 'cooode')
+    for i in range(len(key)):
+        for j in range(math.ceil(len(text)/len(key))):
+            if i == perm[i]:
+                cipher += message[j][i]
+            else:
+                cipher += message[j][perm[i]]
+
+    print(colors['success'] + cipher)
+
+transpositionEncrypt('message', 'code')

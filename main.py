@@ -10,6 +10,7 @@ from hashing.hashwhirlpool import *
 from cipher.caesar import *
 from cipher.morse import *
 from cipher.rot13 import *
+from cipher.transposition import *
 
 colors = {
     'error':'\033[31;1m[x] ',
@@ -29,3 +30,5 @@ print(colors['orange'] + '''
     By @5up3r541y4n (karthikuj2001@gmail.com)
 '''
      )
+
+transpositionEncrypt('msseega', 'code')
