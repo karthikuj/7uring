@@ -29,6 +29,3 @@ print(colors['orange'] + '''
     By @5up3r541y4n (karthikuj2001@gmail.com)
 '''
      )
-
-rot13Encrypt('abcde')
-rot13Decrypt('nopqr')
