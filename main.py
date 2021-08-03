@@ -31,4 +31,4 @@ print(colors['orange'] + '''
 '''
      )
 
-transpositionEncrypt('msseega', 'code')
+transpositionEncrypt('message', 'code')
