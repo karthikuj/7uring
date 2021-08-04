@@ -31,4 +31,5 @@ print(colors['orange'] + '''
 '''
      )
 
-transpositionEncrypt('message', 'code')
+transpositionEncrypt('This is a secret', 'naruto')
+transpositionDecrypt('h rTscie iae s s t', 'naruto')
