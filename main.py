@@ -11,15 +11,17 @@ from cipher.caesar import *
 from cipher.morse import *
 from cipher.rot13 import *
 from cipher.transposition import *
+from cipher.multitapSMS import *
+from cipher.bacon import *
 
 colors = {
     'error':'\033[31;1m[x] ',
     'success':'\033[36;1m',
-    'orange':'\033[33m',
+    'header':'\033[94;1m',
     'msg':'\033[33;1m[o] '
     }
 
-print(colors['orange'] + '''
+print(colors['header'] + '''
     _________             .__                
     \______  \__ _________|__| ____    ____  
         /    /  |  \_  __ \  |/    \  / ___\ 
@@ -31,5 +33,8 @@ print(colors['orange'] + '''
 '''
      )
 
-transpositionEncrypt('This is a secret', 'naruto')
-transpositionDecrypt('h rTscie iae s s t', 'naruto')
+#transpositionEncrypt('this is a secret', 'naruto')
+#transpositionDecrypt('h rTscie iae s s t', 'naruto')
+
+baconEncrypt('This is a secret')
+baconDecrypt('BAABAAABBBABAAABAAAB ABAAABAAAB AAAAA BAAABAABAAAAABABAAAAAABAABAABA')
