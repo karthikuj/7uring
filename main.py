@@ -33,8 +33,5 @@ print(colors['header'] + '''
 '''
      )
 
-#transpositionEncrypt('this is a secret', 'naruto')
-#transpositionDecrypt('h rTscie iae s s t', 'naruto')
-
-baconEncrypt('This is a secret')
-baconDecrypt('BAABAAABBBABAAABAAAB ABAAABAAAB AAAAA BAAABAABAAAAABABAAAAAABAABAABA')
+transpositionEncrypt('Team ACE', 'mentor')
+transpositionDecrypt('e TEa A C m', 'mentor')

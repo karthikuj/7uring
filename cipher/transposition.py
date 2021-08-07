@@ -7,17 +7,25 @@ colors = {
     }
 
 def transpositionEncrypt(text, key):
+    textl = list(text)
+    
+    if ' ' in textl:
+        for i in range(textl.count(' ')):
+            textl.remove(' ')
+
+    text = ''.join(textl)
+    
     cipher = ''
     k = list(key)
     ksort = sorted(k)
     
     perm = []
-    for i in ksort:
-        perm.append(k.index(i))
-        k[k.index(i)] = '§'
+    for i in k:
+        perm.append(ksort.index(i))
+        ksort[ksort.index(i)] = '§'
         
     message = []
-    for i in range(math.ceil(len(text)/len(key))):
+    for i in range(math.ceil(len(text)/len(key))): #Create matrix
         message.append(list())
         message[i] = list(text[i*len(key):(i*len(key))+len(key)])
         if len(message[i]) < len(key):
@@ -28,7 +36,7 @@ def transpositionEncrypt(text, key):
             if i == perm[i]:
                 cipher += message[j][i]
             else:
-                cipher += message[j][perm[i]]
+                cipher += message[j][perm.index(i)]
 
     print(colors['success'] + cipher)
 
@@ -38,29 +46,32 @@ def transpositionDecrypt(text, key):
     ksort = sorted(k)
     
     perm = []
-    for i in ksort:
-        perm.append(k.index(i))
-        k[k.index(i)] = '§'
+    for i in k:
+        perm.append(ksort.index(i))
+        ksort[ksort.index(i)] = '§'
 
-    permNew = list(range(len(key)))
+    #permNew = list(range(len(key)))
         
     message = []
     for i in range(math.ceil(len(text)/len(key))):
         message.append(list())
         message[i].extend(list(' '*len(key)))
-        
+
+    c = 0
     for i in range(len(key)):
         for j in range(math.ceil(len(text)/len(key))):
             try:
-                message[j][i] = text[i+i+j]
+                message[j][i] = text[c]
             except:
                 message[j][i] = ' '
 
+            c += 1
+
     for i in range(math.ceil(len(text)/len(key))):
         for j in range(len(key)):
-            if perm[j] == permNew[j]:
+            if j == perm[j]:
                 decipher += message[i][j]
             else:
-                decipher += message[i][perm.index(permNew[j])]
+                decipher += message[i][perm[j]]
 
     print(colors['success'] + decipher)
