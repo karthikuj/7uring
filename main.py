@@ -13,6 +13,7 @@ from cipher.rot13 import *
 from cipher.transposition import *
 from cipher.multitapSMS import *
 from cipher.bacon import *
+from cipher.monoalphabetic import *
 
 colors = {
     'error':'\033[31;1m[x] ',
@@ -33,5 +34,5 @@ print(colors['header'] + '''
 '''
      )
 
-transpositionEncrypt('Team ACE', 'mentor')
-transpositionDecrypt('e TEa A C m', 'mentor')
+monoalphabeticEncrypt('karthik1337')
+monoalphabeticDecrypt('tlafuxt1337')
