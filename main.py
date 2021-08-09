@@ -36,3 +36,4 @@ print(colors['header'] + '''
 
 monoalphabeticEncrypt('karthik1337')
 monoalphabeticDecrypt('tlafuxt1337')
+
