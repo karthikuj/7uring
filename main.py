@@ -14,6 +14,7 @@ from cipher.transposition import *
 from cipher.multitapSMS import *
 from cipher.bacon import *
 from cipher.monoalphabetic import *
+from encoder.binary import *
 
 colors = {
     'error':'\033[31;1m[x] ',
@@ -34,5 +35,5 @@ print(colors['header'] + '''
 '''
      )
 
-monoalphabeticEncrypt('karthik1337')
-monoalphabeticDecrypt('tlafuxt1337')
+binaryEncode('These are the nights that never die!')
+binaryDecode('01010100 01101000 01100101 01110011 01100101 00100000 01100001 01110010 01100101 00100000 01110100 01101000 01100101 00100000 01101110 01101001 01100111 01101000 01110100 01110011 00100000 01110100 01101000 01100001 01110100 00100000 01101110 01100101 01110110 01100101 01110010 00100000 01100100 01101001 01100101 00100001')
