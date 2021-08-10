@@ -19,7 +19,7 @@ def binaryToDecimal(binary):
     return decimal
 
 def binaryEncode(text):
-    res = ' '.join(format(ord(i), '08b') for i in text)
+    res = ' '.join(format(ord(i), '08b').lstrip('0') for i in text)
 
     print(colors['success'] + res)
 
