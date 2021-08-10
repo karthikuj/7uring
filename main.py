@@ -7,6 +7,7 @@ from hashing.hashsha384 import *
 from hashing.hashmd4 import *
 from hashing.hashblake2b import *
 from hashing.hashwhirlpool import *
+from hshing.hashntlm import *
 from cipher.caesar import *
 from cipher.morse import *
 from cipher.rot13 import *
