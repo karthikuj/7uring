@@ -18,6 +18,7 @@ from cipher.monoalphabetic import *
 from encoder.binary import *
 from encoder.octal import *
 from encoder.hexadecimal import *
+from encoder.base64 import *
 
 colors = {
     'error':'\033[31;1m[x] ',
@@ -38,5 +39,6 @@ print(colors['header'] + '''
 '''
      )
 
-print(stringToNTLM('speaker'))
-ntlmBrute('e3b8d7a3f967bb93fb8cf5d008848244', '/usr/share/wordlists/rockyou.txt')
+base64Encode('This is top secret')
+print(verifyBase64('VGhpcyBpcyB0b3Agc2VjcmV0'))
+base64Decode('VGhpcyBpcyB0b3Agc2VjcmV0')

@@ -1,1 +1,2 @@
-print("Hola! encoders")
+def encode():
+    pass
