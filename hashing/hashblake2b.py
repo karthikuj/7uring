@@ -22,9 +22,15 @@ def verifyBlake2b(blake2b):
         return True
 
 def blake2bToString(blake2b):
-    print(colors['msg'] + 'The online "de-hashing" facility for blake2b\
- is not available yet,\nyou can still try to bruteforce the hash using 7uring.')
-    sys.exit()
+
+    if not verifyBlake2b(blake2b):
+        print(colors['error'] + 'Invalid hash')
+        sys.exit()
+
+    else:
+        print(colors['msg'] + 'The online "de-hashing" facility for blake2b\
+     is not available yet,\nyou can still try to bruteforce the hash using 7uring.')
+        sys.exit()
 
 def blake2bBrute(blake2b, wordlist):
     

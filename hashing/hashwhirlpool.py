@@ -22,9 +22,15 @@ def verifyWhirlpool(whirlpool):
         return True
 
 def whirlpoolToString(whirlpool):
-    print(colors['msg'] + 'The online "de-hashing" facility for whirlpool\
- is not available yet,\nyou can still try to bruteforce the hash using 7uring.')
-    sys.exit()
+
+    if not verifyWhirlpool(whirlpool):
+        print(colors['error'] + 'Invalid hash')
+        sys.exit()
+
+    else:
+        print(colors['msg'] + 'The online "de-hashing" facility for whirlpool\
+     is not available yet,\nyou can still try to bruteforce the hash using 7uring.')
+        sys.exit()
 
 
 def whirlpoolBrute(whirlpool, wordlist):
