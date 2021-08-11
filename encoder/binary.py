@@ -1,4 +1,4 @@
-import sys
+import sys, re
 
 colors = {
     'error':'\033[31;1m[x] ',
@@ -22,6 +22,15 @@ def binaryEncode(text):
     res = ' '.join(format(ord(i), '08b').lstrip('0') for i in text)
 
     print(colors['success'] + res)
+
+def verifyBinary(binary):
+    binaryRegex = re.compile(r'^(0|1|\s)+$') #Create a regex object
+    mo = binaryRegex.search(binary) #Create a match object
+
+    if mo == None:
+        return False
+    else:
+        return True
 
 def binaryDecode(binary):
 
