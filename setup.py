@@ -17,7 +17,7 @@ setuptools.setup(
     },
     entry_points = {
         'console_scripts': [
-            '7uring = 7uring:main'
+            '7uring = turing.turing:main'
         ]
     },
     classifiers=[

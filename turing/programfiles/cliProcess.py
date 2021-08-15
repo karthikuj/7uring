@@ -1,28 +1,29 @@
-from programFiles.menu import *
-from programFiles.banner import *
+#!/usr/bin/python3
+from turing.programfiles.menu import *
+from turing.programfiles.banner import *
 import sys
-from hashing.hashmd5 import *
-from hashing.hashsha512 import *
-from hashing.hashsha1 import *
-from hashing.hashsha256 import *
-from hashing.hashsha224 import *
-from hashing.hashsha384 import *
-from hashing.hashmd4 import *
-from hashing.hashblake2b import *
-from hashing.hashwhirlpool import *
-from hashing.hashntlm import *
-from cipher.caesar import *
-from cipher.morse import *
-from cipher.rot13 import *
-from cipher.transposition import *
-from cipher.multitapSMS import *
-from cipher.bacon import *
-from cipher.monoalphabetic import *
-from cipher.rot47 import *
-from encoder.binary import *
-from encoder.octal import *
-from encoder.hexadecimal import *
-from encoder.base64 import *
+from turing.hashing.hashmd5 import *
+from turing.hashing.hashsha512 import *
+from turing.hashing.hashsha1 import *
+from turing.hashing.hashsha256 import *
+from turing.hashing.hashsha224 import *
+from turing.hashing.hashsha384 import *
+from turing.hashing.hashmd4 import *
+from turing.hashing.hashblake2b import *
+from turing.hashing.hashwhirlpool import *
+from turing.hashing.hashntlm import *
+from turing.cipher.caesar import *
+from turing.cipher.morse import *
+from turing.cipher.rot13 import *
+from turing.cipher.transposition import *
+from turing.cipher.multitapSMS import *
+from turing.cipher.bacon import *
+from turing.cipher.monoalphabetic import *
+from turing.cipher.rot47 import *
+from turing.encoder.binary import *
+from turing.encoder.octal import *
+from turing.encoder.hexadecimal import *
+from turing.encoder.base64 import *
 
 colors = {
     'error':'\033[31;1m[x] ',
@@ -46,13 +47,13 @@ def cliPro(argv):
 7uring --help for help menu.\n')
         sys.exit()
 
+    elif '--help' in argv or '-h' in argv:
+        printMenu()
+
     elif len(argv) < 5:
         print('\n' + colors['error'] + 'All arguments not specified! \
 7uring --help for help menu.\n')
         sys.exit()
-
-    elif '--help' in argv or '-h' in argv:
-        printMenu()
 
     elif argv[1].lower() not in subcommand:
         print(colors['error'] + 'Unrecognized subcommand.')

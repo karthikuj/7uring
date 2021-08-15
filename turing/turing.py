@@ -1,4 +1,5 @@
-from cliProcess import *
+#!/usr/bin/python3
+from turing.programfiles.cliProcess import *
 import sys
 
 def main():
