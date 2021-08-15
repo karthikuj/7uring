@@ -39,7 +39,7 @@ def cliPro(argv):
         print('\n' + colors['error'] + 'Wordlist (-w) not specified')
         sys.exit()
 
-    if 'hash' in argv and '--brute' in argv and '-w' in argv and len(argv) < 6:
+    if 'hash' in argv and '--brute' in argv and '-w' in argv and len(argv) < 7:
         print('\n' + colors['error'] + 'All arguments not specified! \
 7uring --help for help menu.\n')
         sys.exit()
