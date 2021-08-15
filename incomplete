@@ -13,3 +13,7 @@ Monoalphabetic Cipher (function for custom alphabet sequence)
 - Polygram Substitution Cipher
 - Playfair Cipher
 - Hill Cipher
+- Base32 encoder
+- HTML encoder
+- URL encoder
+- Blowfish
