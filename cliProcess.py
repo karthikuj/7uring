@@ -33,7 +33,6 @@ colors = {
 
 def cliPro(argv):
     printBanner()
-    print(argv)
 
     if '--brute' in argv and '-w' in argv and len(argv) >= 7:
         wordlist = argv[5]
@@ -83,3 +82,175 @@ def cliPro(argv):
 
             else:
                 md5Brute(data, wordlist)
+
+        elif argv[2].lower() == '--blake2b':
+            if argv[3] == '--enc':
+                print(colors['success'] + stringToBlake2b(data))
+
+            elif argv[3] == '--dec':
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for hashes. Use --rainbow or --brute\
+ instead.')
+                sys.exit()
+
+            elif argv[3] == '--rainbow':
+                blake2bToString(data)
+
+            else:
+                blake2bBrute(data, wordlist)
+
+        elif argv[2].lower() == '--md4':
+            if argv[3] == '--enc':
+                print(colors['success'] + stringToMD4(data))
+
+            elif argv[3] == '--dec':
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for hashes. Use --rainbow or --brute\
+ instead.')
+                sys.exit()
+
+            elif argv[3] == '--rainbow':
+                md4ToString(data)
+
+            else:
+                md4Brute(data, wordlist)
+
+        elif argv[2].lower() == '--ntlm':
+            if argv[3] == '--enc':
+                print(colors['success'] + stringToNTLM(data))
+
+            elif argv[3] == '--dec':
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for hashes. Use --rainbow or --brute\
+ instead.')
+                sys.exit()
+
+            elif argv[3] == '--rainbow':
+                ntlmToString(data)
+
+            else:
+                ntlmBrute(data, wordlist)
+
+        elif argv[2].lower() == '--sha1':
+            if argv[3] == '--enc':
+                print(colors['success'] + stringToSHA1(data))
+
+            elif argv[3] == '--dec':
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for hashes. Use --rainbow or --brute\
+ instead.')
+                sys.exit()
+
+            elif argv[3] == '--rainbow':
+                sha1ToString(data)
+
+            else:
+                sha1Brute(data, wordlist)
+
+        elif argv[2].lower() == '--sha224':
+            if argv[3] == '--enc':
+                print(colors['success'] + stringToSHA224(data))
+
+            elif argv[3] == '--dec':
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for hashes. Use --rainbow or --brute\
+ instead.')
+                sys.exit()
+
+            elif argv[3] == '--rainbow':
+                sha224ToString(data)
+
+            else:
+                sha224Brute(data, wordlist)
+
+        elif argv[2].lower() == '--sha256':
+            if argv[3] == '--enc':
+                print(colors['success'] + stringToSHA256(data))
+
+            elif argv[3] == '--dec':
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for hashes. Use --rainbow or --brute\
+ instead.')
+                sys.exit()
+
+            elif argv[3] == '--rainbow':
+                sha256ToString(data)
+
+            else:
+                sha256Brute(data, wordlist)
+
+        elif argv[2].lower() == '--sha384':
+            if argv[3] == '--enc':
+                print(colors['success'] + stringToSHA384(data))
+
+            elif argv[3] == '--dec':
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for hashes. Use --rainbow or --brute\
+ instead.')
+                sys.exit()
+
+            elif argv[3] == '--rainbow':
+                sha384ToString(data)
+
+            else:
+                sha384Brute(data, wordlist)
+
+        elif argv[2].lower() == '--sha512':
+            if argv[3] == '--enc':
+                print(colors['success'] + stringToSHA512(data))
+
+            elif argv[3] == '--dec':
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for hashes. Use --rainbow or --brute\
+ instead.')
+                sys.exit()
+
+            elif argv[3] == '--rainbow':
+                sha512ToString(data)
+
+            else:
+                sha512Brute(data, wordlist)
+
+        elif argv[2].lower() == '--whirlpool':
+            if argv[3] == '--enc':
+                print(colors['success'] + stringToWhirlpool(data))
+
+            elif argv[3] == '--dec':
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for hashes. Use --rainbow or --brute\
+ instead.')
+                sys.exit()
+
+            elif argv[3] == '--rainbow':
+                whirlpoolToString(data)
+
+            else:
+                whirlpoolBrute(data, wordlist)
+
+    elif argv[1].lower() == 'cipher':
+        if argv[2].lower() not in ciphers:
+            print(colors['error'] + 'Unrecognized cipher type.')
+            sys.exit()
+
+        elif argv[3].lower() not in options:
+            print(colors['error'] + 'Unrecognized option ' + '\'' + argv[3] + '\'')
+            sys.exit()
+
+        elif argv[2].lower() == '--bacon':
+            if argv[3] == '--enc':
+                baconEncrypt(data)
+
+            elif argv[3] == '--dec':
+                baconDecrypt(data)
+
+            elif argv[3] == '--rainbow':
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for ciphers. Use --enc or --dec\
+ instead.')
+                sys.exit()
+
+            else:
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for ciphers(except caesar). Use --enc or --dec\
+ instead.')
+                sys.exit()
