@@ -35,6 +35,15 @@ colors = {
 def cliPro(argv):
     printBanner()
 
+    if 'hash' in argv and '--brute' in argv and '-w' not in argv:
+        print('\n' + colors['error'] + 'Wordlist (-w) not specified')
+        sys.exit()
+
+    if 'hash' in argv and '--brute' in argv and '-w' in argv and len(argv) < 6:
+        print('\n' + colors['error'] + 'All arguments not specified! \
+7uring --help for help menu.\n')
+        sys.exit()
+
     if '--brute' in argv and '-w' in argv and len(argv) >= 7:
         wordlist = argv[5]
         data = ' '.join(argv[6:])
