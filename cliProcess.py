@@ -26,7 +26,7 @@ from encoder.base64 import *
 
 colors = {
     'error':'\033[31;1m[x] ',
-    'success':'\033[36;1m',
+    'success':'\033[36;1m[-] ',
     'header':'\033[94;1m',
     'msg':'\033[33;1m[o] '
     }
@@ -252,5 +252,226 @@ def cliPro(argv):
             else:
                 print(colors['error'] + '\'' + argv[3] + '\'' +
                       ', this option is not for ciphers(except caesar). Use --enc or --dec\
+ instead.')
+                sys.exit()
+
+        elif argv[2].lower() == '--caesar':
+            
+            if argv[3] == '--enc':
+                shift = int(input(colors['msg'] + 'Enter shift value: '))
+                caesarEncrypt(data, shift)
+
+            elif argv[3] == '--dec':
+                shift = int(input(colors['msg'] + 'Enter shift value: '))
+                caesarDecrypt(data, shift)
+
+            elif argv[3] == '--rainbow':
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for ciphers. Use --enc or --dec\
+ instead.')
+                sys.exit()
+
+            else:
+                caesarBrute(data)
+                sys.exit()
+
+        elif argv[2].lower() == '--monoalphabetic':
+            if argv[3] == '--enc':
+                monoalphabeticEncrypt(data)
+
+            elif argv[3] == '--dec':
+                monoalphabeticDecrypt(data)
+
+            elif argv[3] == '--rainbow':
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for ciphers. Use --enc or --dec\
+ instead.')
+                sys.exit()
+
+            else:
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for ciphers(except caesar). Use --enc or --dec\
+ instead.')
+                sys.exit()
+
+        elif argv[2].lower() == '--morse':
+            if argv[3] == '--enc':
+                morseEncrypt(data)
+
+            elif argv[3] == '--dec':
+                morseDecrypt(data)
+
+            elif argv[3] == '--rainbow':
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for ciphers. Use --enc or --dec\
+ instead.')
+                sys.exit()
+
+            else:
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for ciphers(except caesar). Use --enc or --dec\
+ instead.')
+                sys.exit()
+
+        elif argv[2].lower() == '--multitapsms':
+            if argv[3] == '--enc':
+                multitapEncrypt(data)
+
+            elif argv[3] == '--dec':
+                multitapDecrypt(data)
+
+            elif argv[3] == '--rainbow':
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for ciphers. Use --enc or --dec\
+ instead.')
+                sys.exit()
+
+            else:
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for ciphers(except caesar). Use --enc or --dec\
+ instead.')
+                sys.exit()
+
+        elif argv[2].lower() == '--rot13':
+            if argv[3] == '--enc':
+                rot13Encrypt(data)
+
+            elif argv[3] == '--dec':
+                rot13Decrypt(data)
+
+            elif argv[3] == '--rainbow':
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for ciphers. Use --enc or --dec\
+ instead.')
+                sys.exit()
+
+            else:
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for ciphers(except caesar). Use --enc or --dec\
+ instead.')
+                sys.exit()
+
+        elif argv[2].lower() == '--rot47':
+            if argv[3] == '--enc':
+                rot47Encrypt(data)
+
+            elif argv[3] == '--dec':
+                rot47Decrypt(data)
+
+            elif argv[3] == '--rainbow':
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for ciphers. Use --enc or --dec\
+ instead.')
+                sys.exit()
+
+            else:
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for ciphers(except caesar). Use --enc or --dec\
+ instead.')
+                sys.exit()
+
+        elif argv[2].lower() == '--transposition':
+            if argv[3] == '--enc':
+                key = input(colors['msg'] + 'Enter key value: ')
+                transpositionEncrypt(data, key)
+
+            elif argv[3] == '--dec':
+                key = input(colors['msg'] + 'Enter key value: ')
+                transpositionDecrypt(data, key)
+
+            elif argv[3] == '--rainbow':
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for ciphers. Use --enc or --dec\
+ instead.')
+                sys.exit()
+
+            else:
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for ciphers(except caesar). Use --enc or --dec\
+ instead.')
+                sys.exit()
+
+    elif argv[1].lower() == 'encoder':
+        if argv[2].lower() not in encoders:
+            print(colors['error'] + 'Unrecognized encoding type.')
+            sys.exit()
+
+        elif argv[3].lower() not in options:
+            print(colors['error'] + 'Unrecognized option ' + '\'' + argv[3] + '\'')
+            sys.exit()
+
+        elif argv[2].lower() == '--binary':
+            if argv[3] == '--enc':
+                binaryEncode(data)
+
+            elif argv[3] == '--dec':
+                binaryDecode(data)
+
+            elif argv[3] == '--rainbow':
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for encoders. Use --enc or --dec\
+ instead.')
+                sys.exit()
+
+            else:
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for encoders. Use --enc or --dec\
+ instead.')
+                sys.exit()
+
+        elif argv[2].lower() == '--octal':
+            if argv[3] == '--enc':
+                octalEncode(data)
+
+            elif argv[3] == '--dec':
+                octalDecode(data)
+
+            elif argv[3] == '--rainbow':
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for encoders. Use --enc or --dec\
+ instead.')
+                sys.exit()
+
+            else:
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for encoders. Use --enc or --dec\
+ instead.')
+                sys.exit()
+
+        elif argv[2].lower() == '--hexadecimal':
+            if argv[3] == '--enc':
+                hexadecimalEncode(data)
+
+            elif argv[3] == '--dec':
+                hexadecimalDecode(data)
+
+            elif argv[3] == '--rainbow':
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for encoders. Use --enc or --dec\
+ instead.')
+                sys.exit()
+
+            else:
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for encoders. Use --enc or --dec\
+ instead.')
+                sys.exit()
+
+        elif argv[2].lower() == '--base64':
+            if argv[3] == '--enc':
+                base64Encode(data)
+
+            elif argv[3] == '--dec':
+                base64Decode(data)
+
+            elif argv[3] == '--rainbow':
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for encoders. Use --enc or --dec\
+ instead.')
+                sys.exit()
+
+            else:
+                print(colors['error'] + '\'' + argv[3] + '\'' +
+                      ', this option is not for encoders. Use --enc or --dec\
  instead.')
                 sys.exit()

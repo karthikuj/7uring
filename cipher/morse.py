@@ -19,7 +19,7 @@ valList = ['.-', '-...', '-.-.', '-..', '.', '..-.', '--.', '....', '..',
            '.-..-.', '-.--.', '-...-', '-..-.', '.---.', '..--.-', '-.--.-',
            '.-.-.', '.--.-.']
 
-def morseEncode(text):
+def morseEncrypt(text):
     res = ''
 
     for i in text:
@@ -39,7 +39,7 @@ def morseEncode(text):
 
     print(colors['success'] + res)
 
-def morseDecode(morse):
+def morseDecrypt(morse):
     res = ''
 
     words = morse.split('  ')
