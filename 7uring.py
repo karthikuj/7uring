@@ -1,5 +1,8 @@
 from cliProcess import *
 import sys
 
-if __name__ == '__main__':
+def main():
     cliPro(sys.argv)
+
+if __name__ == '__main__':
+    main()
