@@ -45,6 +45,8 @@ def md5ToString(md5):
             print(colors['msg'] + 'Hash not found in databases')
 
 def md5Brute(md5, wordlist):
+
+    md5 = md5.lower()
     
     if os.path.exists(wordlist) and os.path.isfile(wordlist): #Check if the wordlist exists and if it is a file
         if not os.path.isabs(wordlist): #Check if it is an absolute path

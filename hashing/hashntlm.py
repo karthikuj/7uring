@@ -29,10 +29,12 @@ def ntlmToString(ntlm):
 
     else:
         print(colors['msg'] + 'The online "de-hashing" facility for NTLM\
- is not available yet,\nyou can still try to bruteforce the hash using 7uring.')
+ is not available yet, you can still try to bruteforce the hash using 7uring.')
     sys.exit()
 
 def ntlmBrute(ntlm, wordlist):
+
+    ntlm = ntlm.lower()
 
     if os.path.exists(wordlist) and os.path.isfile(wordlist): #Check if the wordlist exists
         if not os.path.isabs(wordlist): #Check if it is an absolute path

@@ -23,6 +23,8 @@ def verifySHA512(sha512):
 
 def sha512ToString(sha512):
 
+    sha512 = sha512.lower()
+
     if not verifySHA512(sha512):
         print(colors['error'] + 'Invalid hash')
         sys.exit()

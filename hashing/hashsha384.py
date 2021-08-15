@@ -23,6 +23,8 @@ def verifySHA384(sha384):
     
 def sha384ToString(sha384):
 
+    sha384 = sha384.lower()
+
     if not verifySHA384(sha384):
         print(colors['error'] + 'Invalid hash')
         sys.exit()

@@ -53,6 +53,8 @@ def sha256ToString(sha256):
 
 def sha256Brute(sha256, wordlist):
 
+    sha256 = sha256.lower()
+
     if os.path.exists(wordlist) and os.path.isfile(wordlist): #Check if the wordlist exists
         if not os.path.isabs(wordlist): #Check if it is an absolute path
             wordlist = os.path.abspath(wordlist)
