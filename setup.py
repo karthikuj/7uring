@@ -22,7 +22,7 @@ setuptools.setup(
     },
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
+        "License :: OSI Approved :: GPL-3.0 License",
         "Operating System :: OS Independent",
     ],
     keywords = ['hashing', 'encoding', 'encryption', 'steganography', 'cryptanalysis', 'steganalysis', 'cipher'],
