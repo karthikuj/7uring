@@ -15,6 +15,12 @@ setuptools.setup(
     project_urls={
         "Bug Tracker": "https://github.com/karthikuj/7uring/issues",
     },
+    download_url = 'https://github.com/karthikuj/7uring/archive/refs/tags/v1.0.tar.gz',
+    install_requires=[            
+          'requests',
+          'beautifulsoup4',
+          'pyenchant',
+      ],
     entry_points = {
         'console_scripts': [
             '7uring = turing.turing:main'
