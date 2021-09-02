@@ -20,24 +20,9 @@ In short 7uring can take your CTF rank up a notch.
 
 You can install `7uring` like this:
 
-1. Clone the repository:
-```
-git clone https://github.com/karthikuj/7uring.git
-```
 
-2. Change the directory:
 ```
-cd 7uring/
-```
-
-3. Install required modules:
-```
-python -m pip install -r requirements.txt
-```
-
-4. Install the package:
-```
-pip install .
+pip install 7uring
 ```
 
 
